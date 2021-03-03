@@ -141,3 +141,34 @@ Through this plot we can observe the linear relationship between variables **cas
 </div>
 
 
+Estimation of Linear Regression
+========================================================
+type: sub-section
+transition: fade
+class: small-code
+
+The Relationship between two variables is: 
+
+$$Rating = 1.62 + 0.106*Cast + \epsilon$$
+
+```
+
+Call:
+lm(formula = Rating ~ Cast, data = Film)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1.6803 -0.4678  0.0322  0.5088  1.7447 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  1.61789    0.24063   6.724 1.19e-09 ***
+Cast         0.10624    0.03423   3.103   0.0025 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.6715 on 98 degrees of freedom
+Multiple R-squared:  0.08948,	Adjusted R-squared:  0.08019 
+F-statistic: 9.631 on 1 and 98 DF,  p-value: 0.0025
+```
+

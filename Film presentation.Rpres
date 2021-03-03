@@ -107,3 +107,17 @@ htmlwidgets::saveWidget(p,'plotly.html')
 </div>
 
 
+Estimation of Linear Regression
+========================================================
+type: sub-section
+transition: fade
+class: small-code
+
+The Relationship between two variables is: 
+
+$$Rating = 1.62 + 0.106*Cast + \epsilon$$
+```{r,echo=FALSE}
+m1 = lm(Rating~Cast, data=Film)
+summary(m1)
+```
+

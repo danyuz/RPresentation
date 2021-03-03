@@ -1,28 +1,109 @@
-Film presentation
+Presentation of Dataset Film
 ========================================================
-author: 
-date: 
+author: Danyu Zhang 
+date: 03.03.2020
 autosize: true
+font-import: https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap
+font-family: 'Roboto:wght'
 
-First Slide
+This presentation will include the description of the dataset **Film** of library *Stat2Data*. 
+
+It consists of Film data from Maltin's Movie and Video Guide. 
+
+
+<style>
+.small-code pre code {
+  font-size: 25px;
+}
+</style>
+
+Brief Description of the Dataset
 ========================================================
+incremental: true
+transition: fade
+class: small-code
 
-For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
+It is a data frame of Film with 100 observations on the following 9 variables. 
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+For more details on the dataset Film please visit [link](https://cran.r-project.org/web/packages/Stat2Data/Stat2Data.pdf).
 
-Slide With Code
-========================================================
+```{r, include=FALSE}
+library(Stat2Data)
+library(plotly)
+data(Film)
+```
 
 ```{r}
-summary(cars)
+head(Film)
 ```
 
-Slide With Plot
+
+Summary of the Dataset
 ========================================================
+type: sub-section
+transition: fade
+class: small-code
+
+```{r}
+summary(Film)
+```
+
+Variables of the Dataset
+========================================================
+type: sub-section
+transition: fade
+
+1. *Title* Movie title
+2. *Year* Year the movie was released
+3. *Time* Running time (in minutes)
+4. *Cast* Number of cast members listed in the guide
+5. *Rating* Maltin rating (range is 1 to 4, in steps of 0.5)
+6. *Description* Number of lines of text Maltin uses to describe the movie
+7. *Origin* Country: 0 = USA, 1 = Great Britain, 2 = France, 3 = Italy, 4 = Canada
+8. *Time_code* long=90 minutes or longer short=under 90 minutes
+9. *Good* 1=rating of 3 stars or better 0=any lower rating 3. 
+
+Decriptive plots
+========================================================
+type: sub-section
+transition: fade
+
+Histogram of covariate, **casts**
+
 
 ```{r, echo=FALSE}
-plot(cars)
+hist(Film$Cast, title="Number of Cast Members")
 ```
+***
+
+Histogram of response variable, **rating**
+
+```{r,echo=FALSE}
+hist(Film$Rating, title="Maltin Rating")
+```
+
+
+Decriptive plots
+========================================================
+type: sub-section
+transition: fade
+
+Through this plot we can observe the linear relationship between variables **casts** and **ratings**.
+```{r,echo=FALSE}
+p = plot_ly(Film, x=~Cast, y=~Rating, title="Relationship between casts and rating")
+
+htmlwidgets::saveWidget(p,'plotly.html')
+```
+
+<style>
+  .p_iframe iframe {
+    width:50%;
+    height:576px;
+}
+</style>
+
+<div class="p_iframe">
+<iframe frameborder="0" seamless='seamless' scrolling=no src="plotly.html"></iframe>
+</div>
+
+
